@@ -1,23 +1,22 @@
 import math
+from gait_parameters import gaitParameters
 
-class trajectory_planner():
-    def __init__(self):
+class trajectoryPlanner():
+    def __init__(self,time_counter):
+        params = gaitParameters()
 
-        self.step_length = 0.08 # S
-        self.step_height = self.step_length/math.pi  # H
-        self.robot_height = 0.18 # l
-
-        self.swing_period = 2        # Ts
-        self.stance_period = 2       # Ty
-
-        self.gait_period = self.swing_period + self.stance_period # T
+        self.step_length = params.step_length
+        self.step_height = params.step_height
+        self.robot_height = params.robot_height 
+        self.swing_period = params.swing_period        
+        self.stance_period = params.stance_period      
+        self.gait_period = params.gait_period
+        self.time_step = params.time_step
 
         #self.gait_period = 0
         #slef.swing_stance_ratio = 1
         #self.swing_period = self.swing_stance_ratio * self.stance_period
-
-        self.time_counter = 0 # t
-        self.time_step = 0.01
+        self.time_counter = time_counter # t
         self.alpha = 0
         self.tau = 0
     

@@ -22,6 +22,10 @@ install(PROGRAMS
   scripts/action_3.py
   scripts/inverse_kinematics.py
   scripts/trajectory_planner.py
+  scripts/trot_gait.py
+  scripts/double_walking_gait.py
+  scripts/walking_gait.py
+  scripts/gait_parameters.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -4,8 +4,15 @@ from rclpy.node import Node
 from sensor_msgs.msg import JointState
 from std_msgs.msg import String
 import math
-from inverse_kinematics import inverse_kinematics
-from trajectory_planner import *
+from trot_gait import trotGaitController
+from double_walking_gait import DwalkGaitController
+from walking_gait import walkGaitController
+from gait_parameters import gaitParameters
+
+# back left   Leg 1
+# front left  Leg 2
+# back right  Leg 3
+# front right Leg 4
 
 class JointStateAction(Node):
     def __init__(self):
@@ -14,49 +21,42 @@ class JointStateAction(Node):
         self.subscription = self.create_subscription(String,'keyboard_input',self.input_callback,10)
         self.s_key_pressed = False
         self.joint_positions = [0.0] * 12  
+        self.timer = self.create_timer(gaitParameters().time_step, self.update_joint_state)
+        self.trotGait = trotGaitController()
+        self.DwalkGait = DwalkGaitController()
+        self.walkGait = walkGaitController()
 
-        self.timer = self.create_timer(0.01, self.update_joint_state)
-
-        # Initialize joint positions
-        self.initial_x = 0.002
-        self.initial_y = 0.18
-
-        self.trajectory = trajectory_planner()
-        
     def update_joint_state(self):
         # if 's' key is pressed
         if self.s_key_pressed:
             joint_state = JointState()
             joint_state.header.stamp = self.get_clock().now().to_msg()
             joint_state.name = [
-                'front_left_shoulder', 'front_left_leg', 'front_left_foot', #0 1 2s
+                'front_left_shoulder', 'front_left_leg', 'front_left_foot', #0 1 2
                 'front_right_shoulder', 'front_right_leg', 'front_right_foot', #3 4 5
                 'rear_left_shoulder', 'rear_left_leg', 'rear_left_foot', #6 7 8
                 'rear_right_shoulder', 'rear_right_leg', 'rear_right_foot'#9 10 11
             ]
 
-            self.p =  self.trajectory.get_trajectory()
-          
-            #compute joint angles using inverse kinematics wrt waypoint coordinates
-            self.joint_positions[1] = inverse_kinematics(self.p[0], self.p[1])[0]
-            self.joint_positions[2] = - inverse_kinematics(self.p[0], self.p[1])[1]
-
-            self.get_logger().info(f"{self.p}")
-
-            # self.joint_positions[4] = inverse_kinematics(self.x[1], self.y[1])[0]
-            # self.joint_positions[5] = - inverse_kinematics(self.x[1], self.y[1])[1]
+            # self.joint_angles = self.trotGait.trotGait()
+            # self.joint_angles = self.DwalkGait.DwalkGait()
+            self.joint_angles = self.walkGait.walkGait()
             
-            # self.joint_positions[7] = inverse_xskinematics(self.x[2], self.y[2])[0]
-            # self.joint_positions[8] = - inverse_kinematics(self.x[2], self.y[2])[1]
+            # LEG 1 BL
+            self.joint_positions[7] = self.joint_angles[0][0]
+            self.joint_positions[8] = self.joint_angles[0][1]
 
-            # self.joint_positions[10] = inverse_kinematics(self.x[3], self.y[3])[0]
-            # self.joint_positions[11] = - inverse_kinematics(self.x[3], self.y[3])[1]
+            # LEG 2 FL
+            self.joint_positions[1] = self.joint_angles[1][0]
+            self.joint_positions[2] = self.joint_angles[1][1]
 
-            # self.joint_positions[0] = 0.1
-            # self.joint_positions[3] = -0.1
+            # LEG 3 BR
+            self.joint_positions[10] = self.joint_angles[2][0]
+            self.joint_positions[11] = self.joint_angles[2][1]
 
-            # self.joint_positions[6] = 0.1
-            # self.joint_positions[9] = -0.1
+            # LEG 4 FR
+            self.joint_positions[4] = self.joint_angles[3][0]
+            self.joint_positions[5] = self.joint_angles[3][1]
 
             #publish the joint angles
             joint_state.position = self.joint_positions[:]
