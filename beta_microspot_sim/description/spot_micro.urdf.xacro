@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_micro_rviz">
+ <xacro:include filename="$(find beta_microspot_sim)/description/beta_microspot.gazebo.xacro"/>
+
 
   <material name="yellow">
     <color rgba="0.92 0.83 0.0 1"/>
@@ -241,7 +243,7 @@
     <xacro:gen_foot_joint pos="${pos}"/>
     <xacro:gen_toe_joint pos="${pos}"/>
   </xacro:macro>
-
+  
   <!-- Robot Body -->
 
   <link name="base_link">

@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spot_micro_rviz">
+  
+  <!-- SHOULDER LINKS -->
+
+  <gazebo reference="front_left_shoulder_link">
+    <mu1>0.1</mu1>  <!--static friction -->
+    <mu2>0.1</mu2>   <!--dynamic friction -->
+    <kp>500000.0</kp>  <!-- PID to simulate contact friction -->
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  <!--minimum penetration depth for contact detection -->
+    <!-- <maxVel>0.1</maxVel>  maximum linear velocity  -->
+    <!-- <fdir1>1 0 0</fdir1>   direction of friction force -->
+    <material>Gazebo/Black</material> <!--color -->
+  </gazebo>
+
+  <gazebo reference="rear_left_shoulder_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+  
+  <gazebo reference="front_right_shoulder_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <gazebo reference="rear_right_shoulder_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <!-- LEG LINKS -->
+  <gazebo reference="front_left_leg_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>  
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth> 
+    <material>Gazebo/Black</material> <!--color -->
+  </gazebo>
+
+  <gazebo reference="rear_left_leg_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <gazebo reference="front_right_leg_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <gazebo reference="rear_right_leg_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <!-- LEG LINK COVER -->
+  <gazebo reference="front_left_leg_link_cover">
+    <material>Gazebo/Yellow</material> <!--color -->
+  </gazebo>
+
+  <gazebo reference="rear_left_leg_link_cover"> 
+    <material>Gazebo/Yellow</material> 
+  </gazebo>
+
+  <gazebo reference="front_right_leg_link_cover"> 
+    <material>Gazebo/Yellow</material> 
+  </gazebo>
+
+  <gazebo reference="rear_right_leg_link_cover"> 
+    <material>Gazebo/Yellow</material> 
+  </gazebo>
+
+  <!-- FOOT LINK -->
+
+  <gazebo reference="front_left_foot_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>  
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth> 
+    <material>Gazebo/Black</material> <!--color -->
+  </gazebo>
+
+  <gazebo reference="rear_left_foot_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <gazebo reference="front_right_foot_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <gazebo reference="rear_right_foot_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+  <!-- TOE LINK -->
+  <gazebo reference="front_left_toe_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>  
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth> 
+    <material>Gazebo/White</material> <!--color -->
+  </gazebo>
+
+  <gazebo reference="rear_left_toe_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/White</material> 
+  </gazebo>
+
+  <gazebo reference="front_right_toe_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/White</material> 
+  </gazebo>
+
+  <gazebo reference="rear_right_toe_link">
+    <mu1>0.1</mu1>  
+    <mu2>0.1</mu2>   
+    <kp>500000.0</kp>  
+    <kd>10.0</kd>  
+    <minDepth>0.001</minDepth>  
+    <material>Gazebo/White</material> 
+  </gazebo>
+
+  <!-- BASE LINK -->
+  <gazebo reference="base_link">
+    <material>Gazebo/Black</material> <!--color -->
+  </gazebo>
+
+  <!-- FRON REAAR LINKS -->
+  <gazebo reference="front_link">
+    <material>Gazebo/Yellow</material> 
+  </gazebo>
+
+  <gazebo reference="rear_link">
+    <material>Gazebo/Yellow</material> 
+  </gazebo>
+
+  <gazebo reference="lidar_link">
+    <material>Gazebo/Black</material> 
+  </gazebo>
+
+</robot>
+
+
+
+

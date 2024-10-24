@@ -26,6 +26,7 @@ install(PROGRAMS
   scripts/double_walking_gait.py
   scripts/walking_gait.py
   scripts/gait_parameters.py
+  scripts/main_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
