@@ -2,16 +2,11 @@
 This is a repository containing the code base required for cycloidal trajectory generation to simulate multiple walking gaits of a quadruped robot. This algorithm accounts for the robot's kinematic constraints to generate cycloidal motion for each leg. A straightforward position control mechanism handles switching between gaits or walking patterns based on the desired locomotion.
 
 
-https://github.com/user-attachments/assets/2742313b-ec49-4aea-8731-e1572007f2a9
-
-
-
-https://github.com/user-attachments/assets/0c39faf2-d47a-4e3c-8623-eb3678bcdc52
+https://github.com/user-attachments/assets/19e6df1e-ace6-47b8-a80a-3c011af2e411
 
 
 
 
-add an image with the leg and the cycloidal trajectory
 
 # Functionalities and Parameters
 
