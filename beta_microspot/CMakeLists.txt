@@ -17,8 +17,6 @@ install(DIRECTORY
 # Install Python executable script
 install(PROGRAMS
   scripts/input_detector.py
-  scripts/action.py
-  scripts/action_2.py
   scripts/action_3.py
   scripts/inverse_kinematics.py
   scripts/trajectory_planner.py
@@ -26,7 +24,6 @@ install(PROGRAMS
   scripts/double_walking_gait.py
   scripts/walking_gait.py
   scripts/gait_parameters.py
-  scripts/main_controller.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

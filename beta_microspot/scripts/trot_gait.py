@@ -43,7 +43,7 @@ class trotGaitController():
         return [(back_left_knee,back_left_foot),
                 (front_left_knee,front_left_foot),
                 (back_right_knee,back_right_foot),
-                (front_right_knee,front_right_foot)] # list of tupples with angle for each leg [leg1(knee,foot)]
+                (front_right_knee,front_right_foot),waypointsB,waypointsA] # list of tupples with angle for each leg [leg1(knee,foot)]
 
         
 
